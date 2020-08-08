@@ -24,25 +24,26 @@ public class Cours {
         kampire.setPrenom("Anastasie");
         kampire.setSexe('F');
         joueurService.createJoueur(kampire);*/
-
-        MatchService matchService=new MatchService();
-        Match match=new Match();
-        Score score =new Score();
-        score.setSet1((byte)3);
-        score.setSet2((byte)4);
-        score.setSet3((byte)6);
-        match.setScore(score);
-        score.setMatch(match);
-        Joueur federer= new Joueur();
-        federer.setId(32L);
-        Joueur murray= new Joueur();
-        murray.setId(34L);
-        match.setVainqueur(federer);
-        match.setFinaliste(murray);
-        Epreuve epreuve=new Epreuve();
-        epreuve.setId(10l);
-        match.setEpreuve(epreuve);
-        matchService.createMatch(match);
+//
+//        MatchService matchService=new MatchService();
+//        Match match=new Match();
+//        Score score =new Score();
+//        score.setSet1((byte)3);
+//        score.setSet2((byte)4);
+//        score.setSet3((byte)6);
+//        match.setScore(score);
+//        score.setMatch(match);
+//        Joueur federer= new Joueur();
+//        federer.setId(32L);
+//        Joueur murray= new Joueur();
+//        murray.setId(34L);
+//        match.setVainqueur(federer);
+//        match.setFinaliste(murray);
+//        Epreuve epreuve=new Epreuve();
+//        epreuve.setId(10l);
+//        match.setEpreuve(epreuve);
+//        matchService.createMatch(match);
+        joueurService.getJoueur(9L);
 
     }
 }

@@ -103,8 +103,6 @@ public class JoueurRepositoryImpl {
                 joueur.setPrenom(rs.getString("PRENOM"));
                 joueur.setSexe(rs.getString("SEXE").charAt(0));
             }
-            System.out.println("Le joueur est :"+joueur.getNom()+" "+joueur.getPrenom());
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
