@@ -10,11 +10,11 @@ public class Epreuve {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "ANNEE")
-    @Type(type = "short")
-    private int year;
+    private Short year;
     @Column(name = "TYPE_EPREUVE")
     private char type;
-    @Transient
+    @ManyToOne
+    @JoinColumn(name="ID_TOURNOI")
     private Tournoi tournoi;
 
     public Long getId() {
@@ -25,11 +25,11 @@ public class Epreuve {
         this.id = id;
     }
 
-    public int getYear() {
+    public Short getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Short year) {
         this.year = year;
     }
 

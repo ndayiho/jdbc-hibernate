@@ -7,7 +7,8 @@ public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Transient
+    @OneToOne
+    @JoinColumn(name = "ID_MATCH")
     private Match match;
     @Column(name = "SET_1")
     private Byte set1;
