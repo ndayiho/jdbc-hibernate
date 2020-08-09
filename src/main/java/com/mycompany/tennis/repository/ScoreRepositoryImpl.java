@@ -1,9 +1,11 @@
 package com.mycompany.tennis.repository;
 
 import com.mycompany.tennis.DataSourceProvider;
+import com.mycompany.tennis.HibernateUtil;
 import com.mycompany.tennis.entity.Joueur;
 import com.mycompany.tennis.entity.Score;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.hibernate.Session;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -58,4 +60,12 @@ public class ScoreRepositoryImpl {
             }
         }
     }
+
+
+    public Score findById(Long id) {
+        //get session
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        return session.get(Score.class, id);
+    }
+
 }
