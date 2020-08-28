@@ -1,7 +1,5 @@
 package com.mycompany.tennis.entity;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +12,7 @@ public class Epreuve {
     @Column(name = "TYPE_EPREUVE")
     private char type;
     @ManyToOne
-    @JoinColumn(name="ID_TOURNOI")
+    @JoinColumn(name = "ID_TOURNOI")
     private Tournoi tournoi;
 
     public Long getId() {

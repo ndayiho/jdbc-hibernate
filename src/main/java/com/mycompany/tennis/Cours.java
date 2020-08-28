@@ -1,7 +1,7 @@
 package com.mycompany.tennis;
 
 
-import com.mycompany.tennis.entity.*;
+import com.mycompany.tennis.entity.Joueur;
 import com.mycompany.tennis.repository.JoueurRepositoryImpl;
 import com.mycompany.tennis.services.JoueurService;
 

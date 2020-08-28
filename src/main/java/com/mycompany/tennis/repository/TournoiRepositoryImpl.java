@@ -2,11 +2,9 @@ package com.mycompany.tennis.repository;
 
 import com.mycompany.tennis.DataSourceProvider;
 import com.mycompany.tennis.HibernateUtil;
-import com.mycompany.tennis.entity.Joueur;
 import com.mycompany.tennis.entity.Tournoi;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

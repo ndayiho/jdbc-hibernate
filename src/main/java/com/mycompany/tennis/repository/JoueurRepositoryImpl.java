@@ -1,6 +1,5 @@
 package com.mycompany.tennis.repository;
 
-import com.mycompany.tennis.DataSourceProvider;
 import com.mycompany.tennis.HibernateUtil;
 import com.mycompany.tennis.entity.Joueur;
 import org.hibernate.Session;

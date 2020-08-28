@@ -2,7 +2,6 @@ package com.mycompany.tennis.services;
 
 import com.mycompany.tennis.HibernateUtil;
 import com.mycompany.tennis.entity.Score;
-import com.mycompany.tennis.repository.JoueurRepositoryImpl;
 import com.mycompany.tennis.repository.ScoreRepositoryImpl;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

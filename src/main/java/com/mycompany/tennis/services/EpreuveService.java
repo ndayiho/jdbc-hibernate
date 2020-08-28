@@ -2,9 +2,8 @@ package com.mycompany.tennis.services;
 
 import com.mycompany.tennis.HibernateUtil;
 import com.mycompany.tennis.entity.Epreuve;
-import com.mycompany.tennis.entity.Score;
+import com.mycompany.tennis.entity.Joueur;
 import com.mycompany.tennis.repository.EpreuveRepositoryImpl;
-import com.mycompany.tennis.repository.ScoreRepositoryImpl;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -25,5 +24,20 @@ public class EpreuveService {
             e.printStackTrace();
         }
         return epreuve;
+    }
+
+    public void createNewEpreuve(Epreuve epreuve) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            epreuverepository.create(epreuve);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                System.out.println("ERROR --> rollback!!!!!!");
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 }
