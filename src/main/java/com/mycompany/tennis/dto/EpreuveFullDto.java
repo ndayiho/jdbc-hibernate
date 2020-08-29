@@ -1,20 +1,14 @@
-package com.mycompany.tennis.entity;
+package com.mycompany.tennis.dto;
 
-import javax.persistence.*;
+public class EpreuveFullDto {
 
-@Entity
-public class Epreuve {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "ANNEE")
+
     private Short year;
-    @Column(name = "TYPE_EPREUVE")
+
     private char type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_TOURNOI")
-    private Tournoi tournoi;
+    private TournoiDto tournoi;
 
     public Long getId() {
         return id;
@@ -40,11 +34,11 @@ public class Epreuve {
         this.type = type;
     }
 
-    public Tournoi getTournoi() {
+    public TournoiDto getTournoi() {
         return tournoi;
     }
 
-    public void setTournoi(Tournoi tournoi) {
+    public void setTournoi(TournoiDto tournoi) {
         this.tournoi = tournoi;
     }
 }

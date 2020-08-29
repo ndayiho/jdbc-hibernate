@@ -2,20 +2,20 @@ package com.mycompany.tennis.entity;
 
 import javax.persistence.*;
 
-@Entity(name="match_tennis")
+@Entity
+@Table(name="match_tennis")
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name="id_epreuve")
+    @Transient
     private Epreuve epreuve;
     @Transient
     private Score score;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_vainqueur")
     private Joueur vainqueur;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_finaliste")
     private Joueur finaliste;
 

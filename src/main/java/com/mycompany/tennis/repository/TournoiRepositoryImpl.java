@@ -23,8 +23,7 @@ public class TournoiRepositoryImpl {
 
     public Tournoi findById(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Tournoi tournoi = session.get(Tournoi.class, id);
-        return tournoi;
+        return session.get(Tournoi.class, id);
     }
 
 

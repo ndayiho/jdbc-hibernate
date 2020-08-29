@@ -46,7 +46,6 @@ public class JoueurService {
     }
 
     public void rennomer(Long id, String nom) {
-     
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
             transaction = session.beginTransaction();
@@ -58,7 +57,7 @@ public class JoueurService {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } 
+        }
     }
 
     public void changeSex(Long id, Character sexe) {
