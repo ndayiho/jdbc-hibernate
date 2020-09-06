@@ -14,6 +14,21 @@ public class ScoreService {
         this.scoreRepository = new ScoreRepositoryImpl();
     }
 
+    public void deleteScore(Long id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            scoreRepository.delete(id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                System.out.println("ERROR --> rollback!!!!!!");
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
     public ScoreFullDto getFullScore(Long id) {
         Score score = null;
         ScoreFullDto scoreFullDto = null;

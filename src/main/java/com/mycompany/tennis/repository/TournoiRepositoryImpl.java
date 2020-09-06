@@ -2,6 +2,7 @@ package com.mycompany.tennis.repository;
 
 import com.mycompany.tennis.DataSourceProvider;
 import com.mycompany.tennis.HibernateUtil;
+import com.mycompany.tennis.entity.Match;
 import com.mycompany.tennis.entity.Tournoi;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.Session;

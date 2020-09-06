@@ -26,6 +26,21 @@ public class MatchService {
 
     }
 
+    public void deleteMatch(Long id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            matchRepository.delete(id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                System.out.println("ERROR --> rollback!!!!!!");
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
     public void createMatch(MatchDto matchDto) {
         Transaction transaction = null;
         Match match = null;
@@ -44,7 +59,6 @@ public class MatchService {
             score.setSet3(matchDto.getScoreFullDto().getSet3());
             score.setSet4(matchDto.getScoreFullDto().getSet4());
             matchRepository.create(match);
-            scoreRepository.create(score);
             transaction.commit();
             System.out.println("Match created");
         } catch (Exception e) {
