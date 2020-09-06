@@ -2,6 +2,7 @@ package com.mycompany.tennis.services;
 
 import com.mycompany.tennis.HibernateUtil;
 import com.mycompany.tennis.dto.*;
+import com.mycompany.tennis.entity.Joueur;
 import com.mycompany.tennis.entity.Match;
 import com.mycompany.tennis.repository.MatchRepositoryImpl;
 import com.mycompany.tennis.repository.ScoreRepositoryImpl;
@@ -29,6 +30,25 @@ public class MatchService {
                 System.out.println("ERROR --> rollback!!!!!!");
                 transaction.rollback();
             }
+            e.printStackTrace();
+        }
+    }
+
+    public void tapisVert(Long id){
+        Transaction transaction =null;
+        Match match=null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            match = matchRepository.findById(id);
+            Joueur ancienFinalist=match.getFinaliste();
+            match.setFinaliste(match.getVainqueur());
+            match.setVainqueur(ancienFinalist);
+            match.getScore().setSet1((byte)0);
+            match.getScore().setSet2((byte)0);
+            match.getScore().setSet3((byte)0);
+            match.getScore().setSet4((byte)0);
+            transaction.commit();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
