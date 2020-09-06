@@ -8,9 +8,10 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Transient
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_epreuve")
     private Epreuve epreuve;
-    @Transient
+    @OneToOne(mappedBy = "match",fetch = FetchType.LAZY)
     private Score score;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_vainqueur")

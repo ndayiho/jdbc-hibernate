@@ -1,25 +1,12 @@
-package com.mycompany.tennis.entity;
+package com.mycompany.tennis.dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "score_vainqueur")
-public class Score {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ScoreFullDto {
     private Long id;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_match")
-    private Match match;
-    @Column(name = "SET_1")
+    private MatchDto matchDto;
     private Byte set1;
-    @Column(name = "SET_2")
     private Byte set2;
-    @Column(name = "SET_3")
     private Byte set3;
-    @Column(name = "SET_4")
     private Byte set4;
-    @Column(name = "SET_5")
     private Byte set5;
 
     public Long getId() {
@@ -30,13 +17,6 @@ public class Score {
         this.id = id;
     }
 
-    public Match getMatch() {
-        return match;
-    }
-
-    public void setMatch(Match match) {
-        this.match = match;
-    }
 
     public Byte getSet1() {
         return set1;
@@ -72,6 +52,14 @@ public class Score {
 
     public Byte getSet5() {
         return set5;
+    }
+
+    public MatchDto getMatchDto() {
+        return matchDto;
+    }
+
+    public void setMatchDto(MatchDto matchDto) {
+        this.matchDto = matchDto;
     }
 
     public void setSet5(Byte set5) {

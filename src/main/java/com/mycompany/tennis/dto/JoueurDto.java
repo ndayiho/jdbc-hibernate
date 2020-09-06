@@ -1,9 +1,5 @@
 package com.mycompany.tennis.dto;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class JoueurDto {
     private Long id;
     private String nom;

@@ -1,12 +1,11 @@
 package com.mycompany.tennis.dto;
 
-import com.mycompany.tennis.entity.Epreuve;
 import com.mycompany.tennis.entity.Score;
 
 public class MatchDto {
     private Long id;
-    private Epreuve epreuve;
-    private Score score;
+    private EpreuveFullDto epreuveFullDto;
+    private ScoreFullDto scoreFullDto;
     private JoueurDto vainqueur;
     private JoueurDto finaliste;
 
@@ -32,5 +31,29 @@ public class MatchDto {
 
     public void setFinaliste(JoueurDto finaliste) {
         this.finaliste = finaliste;
+    }
+
+    public EpreuveFullDto getEpreuve() {
+        return epreuveFullDto;
+    }
+
+    public void setEpreuve(EpreuveFullDto epreuve) {
+        this.epreuveFullDto = epreuve;
+    }
+
+    public EpreuveFullDto getEpreuveFullDto() {
+        return epreuveFullDto;
+    }
+
+    public void setEpreuveFullDto(EpreuveFullDto epreuveFullDto) {
+        this.epreuveFullDto = epreuveFullDto;
+    }
+
+    public ScoreFullDto getScoreFullDto() {
+        return scoreFullDto;
+    }
+
+    public void setScoreFullDto(ScoreFullDto scoreFullDto) {
+        this.scoreFullDto = scoreFullDto;
     }
 }

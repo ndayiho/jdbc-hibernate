@@ -1,12 +1,8 @@
 package com.mycompany.tennis.services;
 
 import com.mycompany.tennis.HibernateUtil;
-import com.mycompany.tennis.dto.EpreuveLightDto;
-import com.mycompany.tennis.dto.JoueurDto;
-import com.mycompany.tennis.dto.MatchDto;
-import com.mycompany.tennis.entity.Epreuve;
+import com.mycompany.tennis.dto.*;
 import com.mycompany.tennis.entity.Match;
-import com.mycompany.tennis.entity.Score;
 import com.mycompany.tennis.repository.MatchRepositoryImpl;
 import com.mycompany.tennis.repository.ScoreRepositoryImpl;
 import org.hibernate.Session;
@@ -59,6 +55,26 @@ public class MatchService {
             joueurVainqueur.setPrenom(match.getVainqueur().getPrenom());
             joueurVainqueur.setSexe(match.getVainqueur().getSexe());
             matchDto.setVainqueur(joueurVainqueur);
+
+            EpreuveFullDto epreuveDto=new EpreuveFullDto();
+            epreuveDto.setId(match.getEpreuve().getId());
+            epreuveDto.setType(match.getEpreuve().getType());
+            epreuveDto.setYear(match.getEpreuve().getYear());
+            TournoiDto tournoiDto=new TournoiDto();
+            tournoiDto.setId(match.getEpreuve().getTournoi().getId());
+            tournoiDto.setNom(match.getEpreuve().getTournoi().getNom());
+            tournoiDto.setCode(match.getEpreuve().getTournoi().getCode());
+            epreuveDto.setTournoi(tournoiDto);
+            matchDto.setEpreuve(epreuveDto);
+
+            ScoreFullDto scoreFullDto = new ScoreFullDto();
+            scoreFullDto.setId(match.getScore().getId());
+            scoreFullDto.setMatchDto(matchDto);
+            scoreFullDto.setSet1(match.getScore().getSet1());
+            scoreFullDto.setSet2(match.getScore().getSet2());
+            scoreFullDto.setSet3(match.getScore().getSet3());
+            matchDto.setScoreFullDto(scoreFullDto);
+
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

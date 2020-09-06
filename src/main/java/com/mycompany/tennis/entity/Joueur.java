@@ -12,6 +12,7 @@ public class Joueur {
     private Long id;
     private String nom;
     private String prenom;
+    private Character sexe;
 
     public Long getId() {
         return id;
@@ -45,6 +46,5 @@ public class Joueur {
         this.sexe = sexe;
     }
 
-    private Character sexe;
 
 }
