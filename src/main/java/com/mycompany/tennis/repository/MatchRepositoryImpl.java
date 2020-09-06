@@ -1,6 +1,7 @@
 package com.mycompany.tennis.repository;
 
 import com.mycompany.tennis.HibernateUtil;
+import com.mycompany.tennis.dto.MatchDto;
 import com.mycompany.tennis.entity.Match;
 import org.hibernate.Session;
 
