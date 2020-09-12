@@ -3,6 +3,8 @@ package com.mycompany.tennis.repository;
 import com.mycompany.tennis.HibernateUtil;
 import com.mycompany.tennis.entity.Joueur;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,30 +19,21 @@ public class JoueurRepositoryImpl {
 
     public void delete(Long id) {
         final Joueur joueur = findById(id);
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        final Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.delete(joueur);
     }
 
 
     public Joueur findById(Long id) {
         //get session
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        final Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         return session.get(Joueur.class, id);
     }
 
 
     public List<Joueur> findAll() {
-        Session session = null;
-        List<Joueur> joueurs = new ArrayList<>();
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-        } catch (Throwable e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return joueurs;
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        final Query<Joueur> query = session.createQuery("select j from Joueur j", Joueur.class);
+        return query.getResultList();
     }
 }
