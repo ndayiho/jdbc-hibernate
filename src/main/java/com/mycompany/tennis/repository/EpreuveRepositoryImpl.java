@@ -24,7 +24,7 @@ public class EpreuveRepositoryImpl {
 
     public List<Epreuve> findAll(String codeTournoi) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
-        final Query<Epreuve> query = session.createQuery("select e from Epreuve e where e.tournoi.code=:CODE_TOURNOI", Epreuve.class);
+        final Query<Epreuve> query = session.createQuery("select e from Epreuve e join fetch e.tournoi where e.tournoi.code=:CODE_TOURNOI", Epreuve.class);
         query.setParameter("CODE_TOURNOI",codeTournoi);
         return query.getResultList();
     }
