@@ -69,6 +69,30 @@ public class JoueurService {
         return joeuersDto;
     }
 
+    public List<JoueurDto> getJoueurs(char sexe) {
+        List<Joueur> joueurs = joueurRepository.findAll(sexe);
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            for (Joueur joueur : joueurs) {
+                JoueurDto joueurDto = new JoueurDto();
+                joueurDto.setId(joueur.getId());
+                joueurDto.setNom(joueur.getNom());
+                joueurDto.setPrenom(joueur.getPrenom());
+                joueurDto.setSexe(joueur.getSexe());
+                joeuersDto.add(joueurDto);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+
+        return joeuersDto;
+    }
+
     public void rennomer(Long id, String nom) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {

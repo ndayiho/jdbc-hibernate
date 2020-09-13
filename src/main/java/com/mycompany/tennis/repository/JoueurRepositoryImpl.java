@@ -36,4 +36,12 @@ public class JoueurRepositoryImpl {
         final Query<Joueur> query = session.createQuery("select j from Joueur j", Joueur.class);
         return query.getResultList();
     }
+
+
+    public List<Joueur> findAll(char sexe) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        final Query<Joueur> query = session.createQuery("select j from Joueur j where j.sexe=:SEXE", Joueur.class);
+        query.setParameter("SEXE",sexe);
+        return query.getResultList();
+    }
 }
